@@ -28,15 +28,11 @@ data "aws_ami" "amazon_linux_2023" {
 
 resource "aws_s3_bucket" "uploads" {
   bucket = "${var.project_name}-${data.aws_caller_identity.current.account_id}"
-}
 
-resource "aws_s3_bucket_public_access_block" "uploads" {
-  bucket = aws_s3_bucket.uploads.id
-
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
+  # New S3 buckets automatically block public access by default (AWS account setting).
+  # We skip aws_s3_bucket_public_access_block here because many learner IAM policies
+  # lack s3:GetBucketPublicAccessBlock / s3:PutBucketPublicAccessBlock and fail with 403.
+  force_destroy = true
 }
 
 data "aws_iam_policy_document" "ec2_assume_role" {

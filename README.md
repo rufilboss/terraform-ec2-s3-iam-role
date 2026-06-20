@@ -64,6 +64,19 @@ terraform destroy
 - SSH is restricted to `ssh_cidr` — update it if your IP changes.
 - This is a learning baseline, not a production hardening template.
 
+## Troubleshooting
+
+### `AccessDenied` on `GetPublicAccessBlock` during apply
+
+Some IAM users (for example PowerUser or custom learner policies) can create buckets but cannot read or set bucket public access block settings. This project skips the explicit `aws_s3_bucket_public_access_block` resource because new S3 buckets already block public access by default.
+
+If you still have the old resource in state from a failed run:
+
+```bash
+terraform state rm aws_s3_bucket_public_access_block.uploads
+terraform apply
+```
+
 ## Related article
 
 Companion tutorial: [Terraform EC2 and S3 Upload Access](https://dev.to/) *(add your dev.to link after publishing)*
