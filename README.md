@@ -1,4 +1,4 @@
-# terraform-ec2-s3-iam-role
+# Terraform EC2 S3 IAM Role
 
 Terraform tutorial project: launch an EC2 instance and grant **least-privilege S3 upload access** using an IAM instance profile — no long-lived access keys on the server.
 
