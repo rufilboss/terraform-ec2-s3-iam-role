@@ -79,7 +79,7 @@ terraform apply
 
 ## Related article
 
-Companion tutorial: [Terraform EC2 and S3 Upload Access](https://dev.to/) *(add your dev.to link after publishing)*
+Companion tutorial: [Terraform EC2 and S3 Upload Access](https://dev.to/rufilboss/terraform-ec2-and-s3-upload-access-a-simple-iam-role-setup-without-access-keys-4k99)
 
 ## License
 
